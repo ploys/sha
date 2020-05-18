@@ -1,0 +1,8 @@
+name: Git Commit SHA
+description: Retrieve the Git commit SHA that triggered the current workflow
+outputs:
+  sha:
+    description: The Git SHA
+runs:
+  using: node12
+  main: dist/index.js
