@@ -25,10 +25,14 @@ describe('SHA', () => {
     stdout.start()
 
     await import('../src')
+    await new Promise(resolve => setTimeout(resolve, 1000))
 
     stdout.stop()
 
-    expect(stdout.output).toBe(`::set-output name=sha::${sha}\n`)
+    expect(stdout.output).toEqual(expect.stringContaining(`::set-output name=sha::${sha}\n`))
+    expect(stdout.output).toEqual(
+      expect.stringContaining(`::set-output name=short::${sha.substring(0, 7)}\n`)
+    )
     done()
   })
 
@@ -39,10 +43,14 @@ describe('SHA', () => {
     stdout.start()
 
     await import('../src')
+    await new Promise(resolve => setTimeout(resolve, 1000))
 
     stdout.stop()
 
-    expect(stdout.output).toBe('::set-output name=sha::4468e5deabf5e6d0740cd1a77df56f67093ec943\n')
+    expect(stdout.output).toEqual(
+      expect.stringContaining('::set-output name=sha::4468e5deabf5e6d0740cd1a77df56f67093ec943\n')
+    )
+    expect(stdout.output).toEqual(expect.stringContaining('::set-output name=short::4468e5d\n'))
     done()
   })
 })
