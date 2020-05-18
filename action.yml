@@ -1,0 +1,8 @@
+name: Workflow SHA
+description: Retrieve the Git SHA of the current workflow
+outputs:
+  sha:
+    description: The Git SHA
+runs:
+  using: node12
+  main: dist/index.js
