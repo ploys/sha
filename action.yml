@@ -1,5 +1,5 @@
-name: Workflow SHA
-description: Retrieve the Git SHA of the current workflow
+name: Git Commit SHA
+description: Retrieve the Git commit SHA that triggered the current workflow
 outputs:
   sha:
     description: The Git SHA
